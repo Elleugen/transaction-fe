@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Transactions Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a transactions web application built using ReactJS for the frontend and Spring Boot for the backend. The application includes user registration, login, transaction creation, and transaction management functionalities. It also includes role-based access control for transaction makers and approvers.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+### Frontend
+- ReactJS
+- Material-UI (MUI) for UI components
+- Axios for API requests
 
-### `npm start`
+### Backend
+- Spring Boot
+- Spring Security for authentication and authorization
+- JWT (JSON Web Token) for secure authentication
+- PostgreSQL as the database
+- JPA (Java Persistence API) for ORM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Database Design
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application uses a PostgreSQL database. Here are the main tables and their fields:
 
-### `npm test`
+### Users Table
+- `id`: Long (Primary Key)
+- `username`: String (Unique)
+- `password`: String
+- `email`: String
+- `phone`: String
+- `role`: String
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Transactions Table
+- `id`: Long (Primary Key)
+- `referenceNo`: String
+- `toAccountNo`: String
+- `toAccountName`: String
+- `toAccountBank`: String
+- `transferAmount`: Double
+- `description`: String
+- `status`: String
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **User Registration and Login**
+   - Secure registration and login with JWT-based authentication.
+   
+2. **Transaction Overview**
+   - View summary of transactions awaiting approval, approved, and rejected.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Transaction Management**
+   - Create new transactions.
+   - View and manage transactions as a maker or approver.
+   - Approvers can approve or reject transactions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Role-Based Access Control**
+   - Different interfaces and functionalities for transaction makers and approvers.
 
-### `npm run eject`
+## Setup and Run Locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+- Java 11
+- PostgreSQL
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Step-by-Step Guide
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Setup PostgreSQL Database**
+- Create a new PostgreSQL database, then update application.properties with your credential or import the database from repo(transactions.sql).
 
-## Learn More
+2. **Run the Backend**
+- Run the backend using this command: 
+    ./mvnw spring-boot:run
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. **Run the Frontend**
+- Install dependencies using this command:
+    npm install
+- Run the frontend using this command:
+    npm start

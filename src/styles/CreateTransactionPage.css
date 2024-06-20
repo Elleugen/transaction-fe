@@ -1,0 +1,19 @@
+.container {
+    padding-top: 10px;
+    max-width: 600px;
+}
+
+.add-transaction {
+    padding: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
